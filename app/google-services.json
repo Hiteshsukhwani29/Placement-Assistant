@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1064833079629",
+    "project_id": "placement-assistant-93bde",
+    "storage_bucket": "placement-assistant-93bde.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1064833079629:android:cb05605dc7778259feff04",
+        "android_client_info": {
+          "package_name": "com.hitesh.placementassistant"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1064833079629-deeh1g3v5tocnn1n04djqkufmpi36ajd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDb9BV-qVFgjEOSLFuc0yk_LzxET-LxjDM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1064833079629-deeh1g3v5tocnn1n04djqkufmpi36ajd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
