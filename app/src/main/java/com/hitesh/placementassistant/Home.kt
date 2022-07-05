@@ -18,7 +18,15 @@ class Home : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val v = inflater.inflate(R.layout.fragment_home, container, false)
+        val fragments =
+            listOf(
+                OffCampus(),
+                OnCampus()
+            )
         mainTabLayout = v.findViewById(R.id.main_tab_layout)
+        mainViewPager = v.findViewById(R.id.main_view_pager)
+        val adapter = FragmentViewPagerAdapter(this.childFragmentManager, lifecycle, fragments)
+        mainViewPager.adapter = adapter
         mainTabLayout.addTab(
             mainTabLayout
                 .newTab()

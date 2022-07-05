@@ -9,7 +9,6 @@
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/main_tab_layout"
-        app:tabMode="scrollable"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
