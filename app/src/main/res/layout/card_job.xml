@@ -6,6 +6,7 @@
     android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cv_job"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
@@ -21,6 +22,7 @@
             android:orientation="vertical">
 
         <TextView
+            android:id="@+id/tv_companyname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/text_color_bold"
@@ -28,6 +30,7 @@
             tools:text="Company name" />
 
         <TextView
+            android:id="@+id/tv_payrange"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/text_color_bold"
@@ -35,6 +38,7 @@
             tools:text="Pay range" />
 
         <TextView
+            android:id="@+id/tv_skillsrequired"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/text_color_bold"
@@ -42,6 +46,7 @@
             tools:text="Skills required" />
 
         <TextView
+            android:id="@+id/tv_eligibility"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/text_color_bold"
