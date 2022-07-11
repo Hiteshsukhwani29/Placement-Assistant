@@ -1,59 +1,52 @@
 package com.hitesh.placementassistant
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.firestore.FirebaseFirestore
+import com.hitesh.genie.adapter.OffCampusAdapter
+import com.hitesh.genie.adapter.OnCampusAdapter
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [OnCampus.newInstance] factory method to
- * create an instance of this fragment.
- */
 class OnCampus : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var onCampusArraylist: ArrayList<OffCampusModel>
+    lateinit var onCampusAdapter: OnCampusAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_on_campus, container, false)
-    }
+        val v = inflater.inflate(R.layout.fragment_on_campus, container, false)
+        recyclerView = v.findViewById(R.id.rv_on_campus)
+        recyclerView.setHasFixedSize(true)
+        recyclerView.layoutManager = LinearLayoutManager(context)
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment OnCampus.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            OnCampus().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+        onCampusArraylist = arrayListOf()
+
+        onCampusAdapter = OnCampusAdapter(onCampusArraylist)
+        recyclerView.adapter = onCampusAdapter
+
+        val db = FirebaseFirestore.getInstance()
+
+        db.collection("OnCampus").get().addOnSuccessListener { documents ->
+            try {
+                for (document in documents) {
+                    onCampusArraylist.add(document.toObject(OffCampusModel::class.java))
                 }
+                onCampusAdapter.notifyDataSetChanged();
             }
+            catch (e: Exception){
+                Log.d("Firestore Error", e.message.toString())
+            }
+        }
+
+
+        return v
     }
 }

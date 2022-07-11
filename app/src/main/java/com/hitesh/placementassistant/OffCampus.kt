@@ -20,7 +20,7 @@ import kotlin.collections.ArrayList
 class OffCampus : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
-    lateinit var offCampusArraylist: ArrayList<OffCampusModel>
+    private lateinit var offCampusArraylist: ArrayList<OffCampusModel>
     lateinit var offCampusAdapter: OffCampusAdapter
 
     override fun onCreateView(
@@ -37,23 +37,21 @@ class OffCampus : Fragment() {
         offCampusAdapter = OffCampusAdapter(offCampusArraylist)
         recyclerView.adapter = offCampusAdapter
 
-
         val db = FirebaseFirestore.getInstance()
 
         db.collection("OffCampus").get().addOnSuccessListener { documents ->
             try {
                 for (document in documents) {
-                    if (document != null) {
-                        offCampusArraylist.add(document?.toObject(OffCampusModel::class.java)!!)
-                    } else {
-                        Toast.makeText(activity, "No job found", Toast.LENGTH_SHORT).show()
-                    }
+                    offCampusArraylist.add(document.toObject(OffCampusModel::class.java))
                 }
+                offCampusAdapter.notifyDataSetChanged();
             }
             catch (e: Exception){
                 Log.d("Firestore Error", e.message.toString())
             }
         }
+
+
         return v
     }
 }

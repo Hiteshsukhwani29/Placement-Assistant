@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.hitesh.placementassistant.OffCampusModel
 import com.hitesh.placementassistant.R
 
-class OffCampusAdapter(private val mList: List<OffCampusModel>) : RecyclerView.Adapter<OffCampusAdapter.ViewHolder>() {
+class OnCampusAdapter(private val mList: List<OffCampusModel>) : RecyclerView.Adapter<OnCampusAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)

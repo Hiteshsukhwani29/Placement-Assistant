@@ -20,8 +20,8 @@ class Home : Fragment() {
         val v = inflater.inflate(R.layout.fragment_home, container, false)
         val fragments =
             listOf(
-                OffCampus(),
-                OnCampus()
+                OnCampus(),
+                OffCampus()
             )
         mainTabLayout = v.findViewById(R.id.main_tab_layout)
         mainViewPager = v.findViewById(R.id.main_view_pager)
